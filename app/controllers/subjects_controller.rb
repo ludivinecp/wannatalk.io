@@ -10,6 +10,8 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
+    @conference = Conference.find(@subject.conference_id)
+    @participant = Participant.find(@subject.participant_id)
   end
 
   # GET /subjects/new

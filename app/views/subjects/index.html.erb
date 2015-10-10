@@ -18,8 +18,8 @@
       <tr>
         <td><%= subject.title %></td>
         <td><%= subject.description %></td>
-        <td><%= subject.participant_id %></td>
-        <td><%= subject.conference_id %></td>
+        <td><%= Participant.find(subject.participant_id).name %></td>
+        <td><%= Conference.find(subject.conference_id).title %></td>
         <td><%= link_to 'Show', subject %></td>
         <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
         <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>

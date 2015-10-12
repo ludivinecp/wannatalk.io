@@ -27,7 +27,7 @@
   </div>
   <div class="field">
     <%= f.label :conference_id %><br>
-    <%= f.number_field :conference_id %>
+      <%= collection_select(:subject, :conference_id, Conference.all, :id, :title, prompt: true) %>
   </div>
   <div class="actions">
     <%= f.submit %>

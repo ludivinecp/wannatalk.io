@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="text-center">
+  <p>
+    <strong>Title:</strong>
+    <%= @subject.title %>
+  </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @subject.title %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @subject.description %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @subject.description %>
-</p>
+  <p>
+    <strong>Participant:</strong>
+    <%= @subject.participant.name %>
+  </p>
 
-<p>
-  <strong>Participant:</strong>
-  <%= @subject.participant %>
-</p>
+  <p>
+    <strong>Conference:</strong>
+    <%= @subject.conference.title %>
+  </p>
 
-<p>
-  <strong>Conference:</strong>
-  <%= @subject.conference %>
-</p>
-
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-<%= link_to 'Back', subjects_path %>
+  <%= link_to 'Edit', edit_subject_path(@subject) %> |
+  <%= link_to 'Back', subjects_path %> |
+  <%= link_to 'Home', root_path %>
+</div>

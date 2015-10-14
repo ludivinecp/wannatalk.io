@@ -1,4 +1,4 @@
-class ChangeProtectionToParticipant < ActiveRecord::Migration
+class ChangeProtectionToParticipants < ActiveRecord::Migration
   def up
     change_column_null(:participants, :name, false)
   end

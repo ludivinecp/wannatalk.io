@@ -1,35 +1,14 @@
-<%= form_for(@subject) do |f| %>
-  <% if @subject.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
+<%= simple_form_for(@subject) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @subject.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.association :participant %>
+    <%= f.association :conference %>
+  </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :participant_id %><br>
-    <%= collection_select(:subject, :participant_id, Participant.all, :id, :name, prompt: true) %>
-
-    <%= link_to 'New Participant', new_participant_path %>
-  </div>
-  <div class="field">
-    <%= f.label :conference_id %><br>
-      <%= collection_select(:subject, :conference_id, Conference.all, :id, :title, prompt: true) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

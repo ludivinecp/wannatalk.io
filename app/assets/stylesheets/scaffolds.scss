@@ -6,6 +6,10 @@ body {
   line-height: 18px;
 }
 
+.container{
+  padding: 30px;
+}
+
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -19,7 +23,8 @@ pre {
 }
 
 a {
-  color: #000;
+  color: red;
+  font-style: oblique;
 
   &:visited {
     color: #666;
@@ -43,13 +48,12 @@ div {
 
 .field_with_errors {
   padding: 2px;
-  background-color: red;
-  display: table;
+  background-color: #c00;
+  display: block;
 }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
+  border: 2px solid #c00;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
@@ -60,7 +64,7 @@ div {
     font-weight: bold;
     padding: 5px 5px 5px 15px;
     font-size: 12px;
-    margin: -7px;
+    margin: 0px;
     margin-bottom: 0px;
     background-color: #c00;
     color: #fff;
@@ -70,4 +74,8 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+
+tr {
+  text-align: left;
 }

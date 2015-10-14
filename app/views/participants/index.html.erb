@@ -18,9 +18,8 @@
           <tr>
             <td class="col-sm-offset-1 col-sm-2"><%= participant.name %></td>
             <td class="col-sm-2"><%= participant.email %></td>
-            <td class="col-sm-2"><%= link_to 'Show', participant %></td>
-            <td class="col-sm-2"><%= link_to 'Edit', edit_participant_path(participant) %></td>
-            <td class="col-sm-2"><%= link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td class="col-sm-1"></td>
+            <td class="col-sm-2 text-center"><%= link_to 'Show', participant %> | <%= link_to 'Edit', edit_participant_path(participant)%> | <%= link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
@@ -32,6 +31,6 @@
 <br>
 
 <div class="text-center">
-  <td><%= link_to 'New Participant', new_participant_path %></td>
+  <td><%= link_to 'New Participant', new_participant_path %> |</td>
   <td><%= link_to 'Home', root_path %></td>
 </div>

@@ -2,12 +2,12 @@
 
 one:
   title: MyString
-  description: MyString
-  participant_id: 1
-  conference_id: 1
+  description: MyText
+  participant_id: 
+  conference_id: 
 
 two:
   title: MyString
-  description: MyString
-  participant_id: 1
-  conference_id: 1
+  description: MyText
+  participant_id: 
+  conference_id: 

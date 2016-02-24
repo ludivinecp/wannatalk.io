@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.3.0'
 
-
+gem 'haml'
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use SCSS for stylesheets
@@ -30,7 +31,7 @@ group :development, :test do
   gem 'sqlite3'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'binding_of_caller'
   gem 'better_errors'
 
@@ -39,6 +40,9 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'capybara'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl', '~> 4.5'
 end
 
 group :production do    # Made to refect Heroku env for now...

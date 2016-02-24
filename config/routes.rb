@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :participants
   resources :subjects
   resources :participants
   resources :conferences

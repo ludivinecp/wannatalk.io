@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
+gem 'faker'
 gem 'haml'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

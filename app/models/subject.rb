@@ -3,6 +3,9 @@ class Subject < ActiveRecord::Base
   validates :participant, presence: true
   validates :conference, presence: true
 
+  has_many :participants, through: :interested_in
+ 	belongs_to :participant 
+
   belongs_to :participant
   belongs_to :conference
 end

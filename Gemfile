@@ -4,6 +4,7 @@ ruby '2.3.0'
 gem 'faker'
 gem 'haml'
 gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use SCSS for stylesheets
@@ -43,7 +44,8 @@ group :development, :test do
   gem 'spring'
   gem 'capybara'
   gem 'rspec-rails', '~> 3.0'
-  gem 'factory_girl', '~> 4.5'
+  gem 'factory_girl_rails'  
+  gem 'database_cleaner'
 end
 
 group :production do    # Made to refect Heroku env for now...

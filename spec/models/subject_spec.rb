@@ -10,7 +10,7 @@ RSpec.describe Subject, type: :model do
   it "is invalid without a description" do
  	 FactoryGirl.build(:subject, description: nil).should_not be_valid
   end
-    it "is invalid without a participant_id (questionner)" do
+  it "is invalid without a participant_id (questionner)" do
  	 FactoryGirl.build(:subject, participant_id: nil).should_not be_valid
   end
 
@@ -18,7 +18,14 @@ RSpec.describe Subject, type: :model do
  	 FactoryGirl.build(:subject, conference_id: nil).should_not be_valid
   end
 
-  it "belongs to one user" do
-    expect(subject).to belong_to(:participant) 
+  it "belong to one user" do
+    associations = Subject.reflect_on_association(:participant).macro
+    expect(associations).to eq :belongs_to
+  end 
+
+  it "belong to one conference" do
+    associations = Subject.reflect_on_association(:conference).macro
+    expect(associations).to eq :belongs_to
   end 
 end
+

@@ -96,6 +96,6 @@ RSpec.configure do |config|
 =end
   
  config.expect_with :rspec do |c|
-    c.syntax = :should
+    c.syntax = [:should, :expect]
   end
 end

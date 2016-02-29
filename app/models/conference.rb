@@ -1,5 +1,4 @@
 class Conference < ActiveRecord::Base
-  validates :title, presence: true
-  validates :date, presence: true
+  validates_presence_of :title, :date
   has_many :subjects
 end

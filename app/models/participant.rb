@@ -3,6 +3,6 @@ class Participant < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :name, presence: true
+  validates_presence_of :name
   has_many :subjects, through: :subject_participants, :class_name => "Participant", :foreign_key => "questioner_id"
 end

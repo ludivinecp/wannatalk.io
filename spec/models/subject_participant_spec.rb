@@ -8,8 +8,8 @@ RSpec.describe SubjectParticipant, type: :model do
  	 FactoryGirl.build(:subject_participant, participant_id: nil).should_not be_valid
   end
 
-  it "is invalid without a conference_id" do
- 	 FactoryGirl.build(:subject_participant, conference_id: nil).should_not be_valid
+  it "is invalid without a subject_id" do
+ 	 FactoryGirl.build(:subject_participant, subject_id: nil).should_not be_valid
   end
 
 end

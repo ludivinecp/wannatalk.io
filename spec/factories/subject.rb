@@ -6,5 +6,6 @@ FactoryGirl.define do
     f.description {Faker::Lorem.paragraph}
     f.participant_id {Faker::Number.digit}
     f.conference_id {Faker::Number.digit}
+    # f.participants {|p| [p.association(:participant]}
   end
 end

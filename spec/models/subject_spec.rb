@@ -28,10 +28,6 @@ RSpec.describe Subject, type: :model do
     expect(associations).to eq :belongs_to
   end 
 
- it "has many participant (interested)" do
-    associations = Subject.reflect_on_association(:participant).macro
-    expect(associations).to eq :has_many, through(:subject_participants)
-  end 
-   # it { should have_many(:participants).through(:subject_participants) }
+  it { should have_many(:participants) }
 end
 

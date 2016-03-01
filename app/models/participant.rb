@@ -4,5 +4,6 @@ class Participant < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :name
-  has_many :subjects, through: :subject_participants, :class_name => "Participant", :foreign_key => "questioner_id"
+	# belongs_to :subjects, through: :subject_participants, :class_name => "Participant", :foreign_key => "interested_id"
+	has_many :subjects, :class_name => "Participant", :foreign_key => "questioner_id"
 end

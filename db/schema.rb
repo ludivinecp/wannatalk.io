@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160224102211) do
   add_index "participants", ["reset_password_token"], name: "index_participants_on_reset_password_token", unique: true
 
   create_table "subject_participants", force: :cascade do |t|
-    t.integer  "participant_id" #as :interested_id
+    t.integer  "participant_id"
     t.integer  "subject_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20160224102211) do
   create_table "subjects", force: :cascade do |t|
     t.string   "title",          null: false
     t.text     "description"
-    t.integer  "participant_id", null: false  #as :questioner
+    t.integer  "participant_id", null: false
     t.integer  "conference_id",  null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false

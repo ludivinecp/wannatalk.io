@@ -5,5 +5,6 @@ class Participant < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :name
 	# belongs_to :subjects, through: :subject_participants, :class_name => "Participant", :foreign_key => "interested_id"
-	has_many :subjects, through: :subject_participants, :class_name => "Participant"
-end
+	has_many :subjects, through: :subject_participants, :class_name => "Participant" #interested
+	has_many :subjects #questioner
+	end

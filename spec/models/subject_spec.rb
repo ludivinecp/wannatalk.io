@@ -7,10 +7,10 @@ describe Subject do
   end
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:description) }
-  it { is_expected.to validate_presence_of(:participant_id) }
-  it { is_expected.to validate_presence_of(:conference_id) }
+  it { is_expected.to validate_presence_of(:participant) }
+  it { is_expected.to validate_presence_of(:conference) }
 
-  it { should have_many(:participants) } #through association
+  it { should have_many(:interested) } #through association
   it { should belong_to(:participant) }
   it { should belong_to(:conference) }
 

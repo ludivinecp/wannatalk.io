@@ -7,8 +7,8 @@ describe Conference do
   end
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:date) }
-
   it { should have_many(:subjects) } 
+  it { should have_many(:participants) } 
 
 end
 

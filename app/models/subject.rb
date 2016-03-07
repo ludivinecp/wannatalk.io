@@ -1,9 +1,8 @@
 class Subject < ActiveRecord::Base
-  validates :title, presence: true
-  validates :participant, presence: true
-  validates :conference, presence: true
+  validates_presence_of  :title, :questioner, :conference, :description
 
-  has_many :participants, through: :subject_participants, :class_name => "Participant", :foreign_key => "interested_id"
- 	belongs_to :participant, :class_name => "Participant", :foreign_key => "questioner_id"
+  has_many :interested, through: :subject_participants, :class_name => "Participant", :foreign_key => "interested_id" #interested
+  has_many :subject_participants
+  belongs_to :questioner, :class_name => "Participant" #questioner
   belongs_to :conference
 end

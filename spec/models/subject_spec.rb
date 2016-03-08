@@ -18,3 +18,17 @@ RSpec.describe Subject, type: :model do
  	 FactoryGirl.build(:subject, conference_id: nil).should_not be_valid
   end
 
+
+  it "belong to one user(questioner)" do
+    associations = Subject.reflect_on_association(:participant).macro
+    expect(associations).to eq :belongs_to
+  end 
+
+  it "belong to one conference" do
+    associations = Subject.reflect_on_association(:conference).macro
+    expect(associations).to eq :belongs_to
+  end 
+
+  it { should have_many(:participants) }
+end
+

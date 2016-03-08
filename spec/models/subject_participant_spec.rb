@@ -8,7 +8,7 @@ describe SubjectParticipant do
   it { is_expected.to validate_presence_of(:participant_id) }
   it { is_expected.to validate_presence_of(:subject_id) }
 
-  it { should belong_to(:participant) }
+  it { should belong_to(:interested) }
   it { should belong_to(:subject) }
 
 end

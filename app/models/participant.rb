@@ -9,4 +9,4 @@ class Participant < ActiveRecord::Base
 	has_many :subjects, through: :subject_participants #interested
 	has_many :conference_participants
 	has_many :conferences, through: :conference_participants
-	end
+end

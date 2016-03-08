@@ -18,7 +18,3 @@ RSpec.describe Subject, type: :model do
  	 FactoryGirl.build(:subject, conference_id: nil).should_not be_valid
   end
 
-  it "belongs to one user" do
-    expect(subject).to belong_to(:participant) 
-  end 
-end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224102211) do
+ActiveRecord::Schema.define(version: 20160306225605) do
 
   create_table "conferences", force: :cascade do |t|
     t.string   "title",      null: false
@@ -41,25 +41,25 @@ ActiveRecord::Schema.define(version: 20160224102211) do
   add_index "participants", ["reset_password_token"], name: "index_participants_on_reset_password_token", unique: true
 
   create_table "subject_participants", force: :cascade do |t|
-    t.integer  "participant_id"
+    t.integer  "interested_id"
     t.integer  "subject_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "subject_participants", ["participant_id"], name: "index_subject_participants_on_participant_id"
+  add_index "subject_participants", ["interested_id"], name: "index_subject_participants_on_interested_id"
   add_index "subject_participants", ["subject_id"], name: "index_subject_participants_on_subject_id"
 
   create_table "subjects", force: :cascade do |t|
-    t.string   "title",          null: false
+    t.string   "title",         null: false
     t.text     "description"
-    t.integer  "participant_id", null: false
-    t.integer  "conference_id",  null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "questioner_id", null: false
+    t.integer  "conference_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "subjects", ["conference_id"], name: "index_subjects_on_conference_id"
-  add_index "subjects", ["participant_id"], name: "index_subjects_on_participant_id"
+  add_index "subjects", ["questioner_id"], name: "index_subjects_on_questioner_id"
 
 end

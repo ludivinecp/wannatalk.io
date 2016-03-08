@@ -1,34 +1,18 @@
-require 'spec_helper'
+require 'rails_helper'
 
-RSpec.describe Subject, type: :model do
+describe Subject do
+
   it "has a valid factory" do
-  	FactoryGirl.create(:subject).should be_valid
-  end 
-  it "is invalid without a title" do
- 	 FactoryGirl.build(:subject, title: nil).should_not be_valid
+  FactoryGirl.create(:subject).should be_valid
   end
-  it "is invalid without a description" do
- 	 FactoryGirl.build(:subject, description: nil).should_not be_valid
-  end
-    it "is invalid without a participant_id (questionner)" do
- 	 FactoryGirl.build(:subject, participant_id: nil).should_not be_valid
-  end
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_presence_of(:description) }
+  it { is_expected.to validate_presence_of(:questioner) }
+  it { is_expected.to validate_presence_of(:conference) }
 
-  it "is invalid without a conference_id" do
- 	 FactoryGirl.build(:subject, conference_id: nil).should_not be_valid
-  end
+  it { should have_many(:interested) } #through association
+  it { should belong_to(:questioner) }
+  it { should belong_to(:conference) }
 
-
-  it "belong to one user(questioner)" do
-    associations = Subject.reflect_on_association(:participant).macro
-    expect(associations).to eq :belongs_to
-  end 
-
-  it "belong to one conference" do
-    associations = Subject.reflect_on_association(:conference).macro
-    expect(associations).to eq :belongs_to
-  end 
-
-  it { should have_many(:participants) }
 end
 

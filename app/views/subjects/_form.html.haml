@@ -1,0 +1,8 @@
+= simple_form_for(@subject) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :title
+    = f.input :description
+    = f.association :conference
+  .form-actions
+    = f.button :submit

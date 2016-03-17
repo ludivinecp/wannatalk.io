@@ -1,0 +1,10 @@
+.text-center
+  %h1
+    %strong= @participant.try(:name)
+  %p
+    %strong Email:
+    = @participant.email
+  = link_to 'Edit', edit_participant_path(@participant)
+  |
+  \#{link_to 'Back', participants_path} |
+  \#{link_to 'Home', root_path}

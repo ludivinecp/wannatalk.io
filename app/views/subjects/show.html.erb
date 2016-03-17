@@ -10,7 +10,7 @@
 
   <p>
     <strong>Participant:</strong>
-    <%= @subject.participant.name %>
+    <%= @subject.participant.try(:name) %>
   </p>
 
   <p>

@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_participant!
+  before_action :authenticate_participant!,  only:  [:new, :create, :edit, :update, :destroy]
 
   # GET /subjects
   # GET /subjects.json
@@ -24,17 +24,21 @@ class SubjectsController < ApplicationController
 
   # POST /subjects
   # POST /subjects.json
-  def create
-    def create
-     @subject = current_participant.subjects.build(subject_params) # le .build permet de save le current_user_id
-    if @subject.save
-      redirect_to root_path
-    else
-      render :new
+def create
+    @conference = Conference.all
+    @subject = Subject.new(subject_params)
+
+    respond_to do |format|
+      if @subject.save
+        format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
+        format.json { render :show, status: :created, location: @subject }
+      else
+        format.html { render :new }
+        format.json { render json: @subject.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  end
 
   # PATCH/PUT /subjects/1
   # PATCH/PUT /subjects/1.json
@@ -68,6 +72,6 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:title, :description, :participant_id, :conference_id)
+      params.require(:subject).permit(:title, :description, :questioner_id, :conference_id)
     end
 end

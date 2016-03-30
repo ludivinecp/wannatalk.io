@@ -3,9 +3,10 @@ class Participant < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-	# belongs_to :subjects, through: :subject_participants, :class_name => "Participant", :foreign_key => "interested_id"
-	has_many :subjects #questioner
-	has_many :subjects, through: :subject_participants #interested
-	has_many :conference_participants
-	has_many :conferences, through: :conference_participants
+  validates_presence_of :name
+  has_many :subjects #questioner
+  has_many :subjects, through: :subject_participants #interested
+  has_many :conference_participants
+  has_many :conferences, through: :conference_participants
+  has_many :subject_participants
 end

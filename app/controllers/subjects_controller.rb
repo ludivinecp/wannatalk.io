@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_participant!
 
   # GET /subjects
   # GET /subjects.json
@@ -24,17 +25,15 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
-    @subject = Subject.new(subject_params)
-
-    respond_to do |format|
-      if @subject.save
-        format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
-        format.json { render :show, status: :created, location: @subject }
-      else
-        format.html { render :new }
-        format.json { render json: @subject.errors, status: :unprocessable_entity }
-      end
+    def create
+     @subject = current_participant.subjects.build(subject_params) # le .build permet de save le current_user_id
+    if @subject.save
+      redirect_to root_path
+    else
+      render :new
     end
+  end
+
   end
 
   # PATCH/PUT /subjects/1

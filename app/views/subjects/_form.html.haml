@@ -1,0 +1,12 @@
+= form_for(@subject) do |f|
+  .form-group
+    = f.label :titre
+    = f.text_field :title
+    .form-group
+      = f.label :description
+      = f.text_field :description
+      .form-group
+        = f.collection_select :conference_id, Conference.all, :id, :title
+        = f.hidden_field :questioner_id, :value => current_participant.id
+        .form-group
+          = f.submit "Enregistrer"

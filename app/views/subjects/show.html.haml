@@ -1,0 +1,16 @@
+.text-center
+  %h1
+    %strong= @subject.title
+  %p
+    %strong Description:
+    = @subject.description
+  %p
+    %strong Participant:
+    = @subject.questioner.name
+  %p
+    %strong Conference:
+    = @subject.conference.title
+  = link_to 'Edit', edit_subject_path(@subject)
+  |
+  \#{link_to 'Back', subjects_path} |
+  \#{link_to 'Home', root_path}

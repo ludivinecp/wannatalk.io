@@ -1,5 +1,5 @@
 class Subject < ActiveRecord::Base
-  validates_presence_of  :title, :questioner, :conference, :description
+  validates_presence_of  :title, :conference, :description
 
   has_many :subject_participants
   has_many :interested, through: :subject_participants, :class_name => "Participant", :foreign_key => "interested_id" #interested

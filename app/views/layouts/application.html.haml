@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %title WannaTalk
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %p.navbar-text.pull-right
+      - if participant_signed_in?
+        Logged in as
+        = succeed "." do
+          %strong= current_participant.email
+        = link_to 'Edit profile', edit_participant_registration_path, :class => 'navbar-link'
+        |
+        \#{link_to "Logout", destroy_participant_session_path, method: :delete, :class => 'navbar-link'}
+      - else
+        = link_to "Sign up", new_participant_registration_path, :class => 'navbar-link'
+        |
+        \#{link_to "Login", new_participant_session_path, :class => 'navbar-link'}
+    - if notice
+      %p.alert.alert-success= notice
+    - if alert
+      %p.alert.alert-danger= alert
+    = yield

@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.3.0'
 
+gem 'faker'
+gem 'haml'
+gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -30,15 +33,21 @@ group :development, :test do
   gem 'sqlite3'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'binding_of_caller'
   gem 'better_errors'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.0', group: :development
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'capybara'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'  
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 2.5.0', require: false
+
 end
 
 group :production do    # Made to refect Heroku env for now...

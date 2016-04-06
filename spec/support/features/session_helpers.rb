@@ -1,0 +1,26 @@
+require 'rspec/rails'
+require 'capybara'
+require 'capybara/dsl'
+require 'spec_helper'
+include Capybara::DSL
+
+module Features
+  module SessionHelpers
+
+    def sign_in_with(email, password)
+      visit new_participant_session_path
+      fill_in 'Email', with: email
+      fill_in "Password", with: password
+      click_on("Log in")
+    end
+
+    def sign_up_with(firstname, lastname, email, password)
+      visit new_participant_registration_path
+      fill_in "Email",                        :with => email
+      fill_in "Password",                 :with => password
+      fill_in "Password confirmation", :with => password
+      click_on("Sign up")
+    end
+
+  end
+end

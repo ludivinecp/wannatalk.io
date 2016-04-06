@@ -44,9 +44,11 @@ group :development, :test do
   gem 'spring'
   gem 'capybara'
   gem 'rspec-rails', '~> 3.0'
-  gem 'factory_girl_rails'  
+  gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 2.5.0', require: false
+  gem "capybara"
+
 
 end
 

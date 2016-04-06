@@ -4,6 +4,8 @@ require 'capybara/dsl'
 require 'spec_helper'
 include Capybara::DSL
 
+Capybara.default_driver = :selenium  # use :poltergeist for headless
+
 module Features
   module SessionHelpers
 

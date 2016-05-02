@@ -19,7 +19,8 @@
             %td.col-sm-1
             %td.col-sm-2.text-center
               = link_to 'Show', subject
-              | #{link_to 'Edit', edit_subject_path(subject)} | #{link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }} #{link_to "ça m'interesse !", new_subject_participant_path(subject), class:"btn btn-primary"}
+              | #{link_to 'Edit', edit_subject_path(subject)} | #{link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }}
+              = link_to "Ca m'intéresse", subject_participant_index_path(:interested_id => current_participant, :subject_id => subject.id), :method => :post, class:"btn btn-primary"
 %br/
 .text-center
   %td

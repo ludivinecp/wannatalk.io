@@ -6,6 +6,11 @@ include Capybara::DSL
 
 Capybara.default_driver = :selenium  # use :poltergeist for headless
 
+#Allow to use the href value to find a button
+Capybara.add_selector(:link_with_href) do
+  xpath {|href| ".//a[@href='#{href}']"}
+end
+
 module Features
   module SessionHelpers
 
@@ -21,7 +26,7 @@ module Features
       fill_in "Email",                        :with => email
       fill_in "Password",                 :with => password
       fill_in "Password confirmation", :with => password
-      click_on("Sign up")
+      click_on("Je m'inscris")
     end
 
   end

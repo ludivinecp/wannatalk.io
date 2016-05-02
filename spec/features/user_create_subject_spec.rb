@@ -13,7 +13,8 @@ describe "User submits a subject" do
     click_on('Déconnexion')
   end
 
- it "allows user to create a new subject" do
+  context 'allows user to create a new subject' do
+    before(:each) do
 
       subject_title = "Capybara"
       subject_description = "How to use Capybara in native Ruby project"
@@ -25,6 +26,12 @@ describe "User submits a subject" do
       fill_in ("input[name='subject[title]']"), with: subject_title
       fill_in ("input[name='subject[description]']"), with: subject_description
       click_on ("Enregistrer")
-      expect(page).to have_link subject_title
+    end
+
+    after(:each) do
+      find(:link_with_href, '/users/sign_out').click
+    end
+    it ("should create a new subject") {expect(page).to have_link subject_title}
   end
 end
+

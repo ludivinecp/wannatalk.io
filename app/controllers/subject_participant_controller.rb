@@ -4,10 +4,6 @@ class SubjectParticipantController < ApplicationController
   def show
   end
 
-  def new
-   @subject_participant = SubjectParticipant.new
-  end
-
   def create
   @subject_participant = SubjectParticipant.new(subject_participant_params)
 

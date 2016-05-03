@@ -21,10 +21,10 @@ class SubjectParticipantController < ApplicationController
   end
 
   def destroy
-    # @subject_participants = @subject_participant(subject_participant_params)
-    # @subject_participants.destroy
-    # flash[:alert] = "Participation annulée"
-    # redirect_to subjects_path
+    @subject_participant = SubjectParticipant.find(params[:id])
+    @subject_participant.destroy
+    flash[:alert] = "Participation annulée"
+    redirect_to subjects_path
   end
 
   def subject_participant_params

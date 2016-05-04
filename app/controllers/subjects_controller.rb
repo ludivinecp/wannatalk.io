@@ -6,6 +6,7 @@ class SubjectsController < ApplicationController
   # GET /subjects.json
   def index
     @subjects = Subject.all
+    @subject_participant
   end
 
   # GET /subjects/1

@@ -7,7 +7,7 @@ describe Participant do
   end
   it { should have_many(:subjects) } #through association
   it { should have_many(:conferences) } #through association
-
+  it { should have_many(:subjects_interested_in) }
 
 end
 

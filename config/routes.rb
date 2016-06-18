@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :subjects
   resources :participants
   resources :conferences
+  resources :subject_participant
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

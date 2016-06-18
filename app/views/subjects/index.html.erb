@@ -18,7 +18,7 @@
           <tr>
             <td class="col-sm-offset-1 col-sm-2"><%= subject.title %></td>
             <td class="col-sm-2"><%= subject.description %></td>
-            <td class="col-sm-2"><%= subject.participant.try(:name) %></td>
+            <td class="col-sm-2"><%= subject.questioner.try(:name) %></td>
             <td class="col-sm-2"><%= subject.conference.title %></td>
             <td class="col-sm-1"></td>
             <td class="col-sm-2 text-center"><%= link_to 'Show', subject %> | <%= link_to 'Edit', edit_subject_path(subject)%> | <%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>

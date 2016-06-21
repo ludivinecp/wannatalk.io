@@ -1,0 +1,23 @@
+.text-center
+  %h1
+    %strong= @subject.title
+  %p
+    %strong Description:
+    = @subject.description
+  %p
+    %strong Rapporteur:
+    = @subject.questioner.try(:name)
+  %p
+    %strong Conference:
+    = @subject.conference.title
+  %p
+    %strong Participant:
+    %ul  
+      - @interesteds.each do |interested|
+        %li 
+          = interested.email
+
+  = link_to 'Edit', edit_subject_path(@subject)
+  |
+  \#{link_to 'Back', subjects_path} |
+  \#{link_to 'Home', root_path}

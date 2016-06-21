@@ -1,0 +1,8 @@
+- if participant_signed_in?
+  - if subject.participation(current_participant).nil?
+    = link_to "Ca m'intéresse !",   subject_participant_index_path(:interested_id => current_participant.id, :subject_id => subject.id), :method => :post, class:"btn btn-primary"
+
+  - else
+    = link_to "Ca ne m'intéresse plus !",   subject_participant_path(subject.participation(current_participant).id), :method => :delete, class:"btn btn-primary"
+- else
+  = link_to "Connectez-vous", new_participant_session_path

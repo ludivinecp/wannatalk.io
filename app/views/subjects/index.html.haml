@@ -6,7 +6,7 @@
         %tr
           %th.col-sm-offset-1.col-sm-2 Title
           %th.col-sm-2 Description
-          %th.col-sm-2 Participant
+          %th.col-sm-2 Questioner
           %th.col-sm-2 Conférence
           %th{:colspan => "3"}
       %tbody
@@ -20,13 +20,9 @@
             %td.col-sm-2.text-center
               = link_to 'Show', subject
               | #{link_to 'Edit', edit_subject_path(subject)} | #{link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }}
-
-              - if SubjectParticipant.where(interested_id: current_participant.id, subject_id: subject.id).exists?
-                = link_to "Ca ne m'intéresse plus !", subject_participant_path(SubjectParticipant.find_by(interested_id: current_participant.id, subject_id: subject.id).id), :method => :delete, class:"btn btn-primary"
-
-              - else
-                = link_to "Ca m'intéresse !",   subject_participant_index_path(:interested_id => current_participant.id, :subject_id => subject.id), :method => :post, class:"btn btn-primary"
-
+ 
+              = render partial: 'inscription_button', locals: {subject: subject}
+              
 %br/
 .text-center
   %td

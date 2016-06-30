@@ -4,13 +4,9 @@ class ConferencesController < ApplicationController
   # GET /conferences
   # GET /conferences.json
   def index
-    @conferences = Conference.all
-
-    #Find all the ParisRb events from the API meetup
-    response = ApiMeetup.new.events('parisrb')
-    @hash = JSON.parse(response.body)
-
+    @conferences = Conference.save_conference_from_api
   end
+
 
   # GET /conferences/1
   # GET /conferences/1.json

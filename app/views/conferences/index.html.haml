@@ -1,7 +1,8 @@
 %ul
-  - @hash.each do |event|
-    - next if event['name'].nil? || !event['name'].include?('ParisRb.new(premier: :mardi, pour: :talks)')
+  - @conferences.each do |conf|
     %li
-      Paris RB du
-      = event['time']
+      = conf.title
+      du
+      = conf.date
+
 

@@ -5,11 +5,11 @@ class ConferencesController < ApplicationController
   # GET /conferences.json
   def index
     @conferences = Conference.all
-    response = ApiMeetup.new.events(2.3488000, 48.8534100)
 
-    hash = JSON.parse(response.body)
+    #Find all the ParisRb events from the API meetup
+    response = ApiMeetup.new.events('parisrb')
+    @hash = JSON.parse(response.body)
 
-    @events = hash['results']
   end
 
   # GET /conferences/1

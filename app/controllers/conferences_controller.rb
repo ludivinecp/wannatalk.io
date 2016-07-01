@@ -4,7 +4,7 @@ class ConferencesController < ApplicationController
   # GET /conferences
   # GET /conferences.json
   def index
-    @conferences = Conference.save_conference_from_api
+   @conferences = Conference.save_conference_from_api.current_conferences
   end
 
 

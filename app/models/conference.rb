@@ -3,7 +3,8 @@ class Conference < ActiveRecord::Base
   has_many :subjects
   has_many :conference_participants
 	has_many :participants, through: :conference_participants
-  validates :date, :url, :uniqueness => true
+  validates :date, :uniqueness => true
+  scope :current_conferences, -> {where("date > ?", Time.now)}
 
   def data_from_api
     response = ApiMeetup.new.events('parisrb')
@@ -37,15 +38,6 @@ class Conference < ActiveRecord::Base
     end
    Conference.all
   end
-
-  # def self.current_conferences
-  #   self.each  do |conf|
-  #     if conf.date < Time.now
-  #       conf.destroy!
-  #     end
-  #     Conference.all
-  #   end
-  # end
 end
 
 

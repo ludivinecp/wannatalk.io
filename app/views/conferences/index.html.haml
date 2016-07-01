@@ -1,8 +1,11 @@
 %ul
+  = @conferences.count
   - @conferences.each do |conf|
     %li
-      = conf.title
-      du
-      = conf.date
+      %span
+        Paris rb du
+        = conf.date
+
+
 
 

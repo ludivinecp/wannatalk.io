@@ -3,6 +3,7 @@ class Conference < ActiveRecord::Base
   has_many :subjects
   has_many :conference_participants
 	has_many :participants, through: :conference_participants
+  validates :date, :url, :uniqueness => true
 
   def data_from_api
     response = ApiMeetup.new.events('parisrb')
@@ -30,10 +31,21 @@ class Conference < ActiveRecord::Base
       conference.title = line['name']
       conference.date = line['time']
       conference.url = line['link']
-      conference.save!
+      if conference.valid?
+        conference.save
+      end
     end
    Conference.all
   end
+
+  # def self.current_conferences
+  #   self.each  do |conf|
+  #     if conf.date < Time.now
+  #       conf.destroy!
+  #     end
+  #     Conference.all
+  #   end
+  # end
 end
 
 

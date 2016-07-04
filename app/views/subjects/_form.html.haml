@@ -3,7 +3,7 @@
   .form-inputs
     = f.input :title
     = f.input :description
-    = f.association :questioner
-    = f.association :conference, :include_blank => false,  :label_method => lambda { |conference| "#{conference.date.current_conferences}" }
+    = f.hidden_field :questioner_id, :value => @current_participant.id
+    = f.association :conference, :include_blank => false,  :collection => @current_conferences,  :label_method => lambda { |conference| "#{conference.date}" }
   .form-actions
     = f.button :submit

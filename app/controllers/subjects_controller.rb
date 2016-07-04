@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_participant!, only: [:edit, :update, :destroy, :new]
 
   # GET /subjects
   # GET /subjects.json
@@ -15,6 +16,8 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
     @subject = Subject.new
+    @current_conferences = Conference.all.current_conferences
+    @current_participant = current_participant
   end
 
   # GET /subjects/1/edit

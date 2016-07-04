@@ -1,0 +1,28 @@
+%h1.text-center Subjects
+.container
+  .row
+    %table
+      %thead
+        %tr
+          %th.col-sm-offset-1.col-sm-2 Title
+          %th.col-sm-2 Description
+          %th.col-sm-2 Rapporteur
+          %th.col-sm-2 subject
+          %th{:colspan => "3"}
+      %tbody
+        - @subjects.each do |subject|
+          %tr
+            %td.col-sm-offset-1.col-sm-2= subject.title
+            %td.col-sm-2= subject.description
+            %td.col-sm-2= subject.questioner.try(:name)
+            %td.col-sm-2= subject.conference.title
+            %td.col-sm-1
+            %td.col-sm-2.text-center
+              = link_to 'Show', subject
+              | #{link_to 'Edit', edit_subject_path(subject)} | #{link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }}
+%br/
+.text-center
+  %td
+    = link_to 'New Subject', new_subject_path
+    |
+  %td= link_to 'Home', root_path

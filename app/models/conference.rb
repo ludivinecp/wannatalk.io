@@ -6,7 +6,7 @@ class Conference < ActiveRecord::Base
   validates :date, :uniqueness => true
   scope :current_conferences, -> {where("date > ?", Time.now)}
 
-  def data_from_api
+  def self.data_from_api
     response = ApiMeetup.new.events('parisrb')
     api_data = JSON.parse(response.body)
 
@@ -14,7 +14,7 @@ class Conference < ActiveRecord::Base
   end
 
   #Keep only Paris RB conferences
-  def parisrb_conferences(api_data)
+  def self.parisrb_conferences(api_data)
     parisrb = []
     api_data.each do |event|
       if event["name"] == "ParisRb.new(premier: :mardi, pour: :talks)"
@@ -24,19 +24,24 @@ class Conference < ActiveRecord::Base
     parisrb
   end
 
+
   #Save Paris RB conferences from the Meetup API
   def self.save_conference_from_api
-    data = Conference.new.data_from_api
-    Conference.new.parisrb_conferences(data).map do |line|
-      conference = Conference.new
+    data = data_from_api
+    parisrb_conferences(data).each do |line|
+      conference = self.new
       conference.title = line['name']
-      conference.date = line['time']
+      conference.date = format_date(line['time'])
       conference.url = line['link']
       if conference.valid?
         conference.save
       end
     end
-   Conference.all
+   self.all
+  end
+
+  def self.format_date(date)
+   DateTime.strptime(date.to_s,'%Q')
   end
 end
 

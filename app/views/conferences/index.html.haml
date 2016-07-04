@@ -2,8 +2,8 @@
   - @conferences.each do |conf|
     %li
       %span
-        Paris rb du
-        = conf.date
+        = link_to (conf.url) do
+          Paris rb du "#{conf.date}"
 
 
 

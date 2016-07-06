@@ -19,7 +19,10 @@
             %td.col-sm-1
             %td.col-sm-2.text-center
               = link_to 'Show', subject
-              | #{link_to 'Edit', edit_subject_path(subject)} | #{link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }}
+
+              - if participant_signed_in?
+                - if questioner?(subject)
+                  | #{link_to 'Edit', edit_subject_path(subject)} | #{link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }}
 %br/
 .text-center
   %td

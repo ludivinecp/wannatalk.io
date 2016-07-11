@@ -1,0 +1,9 @@
+= simple_form_for(@subject) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :title
+    = f.input :description
+    = f.hidden_field :questioner_id, :value => @current_participant.id
+    = f.association :conference, :include_blank => false,  :collection => @current_conferences,  :label_method => lambda { |conference| "#{conference.date}" }
+  .form-actions
+    = f.button :submit

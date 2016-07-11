@@ -10,12 +10,14 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
-    @interesteds = @subject.interested 
+    @interesteds = @subject.interested
   end
 
   # GET /subjects/new
   def new
     @subject = Subject.new
+    @current_conferences = Conference.all.current_conferences
+    @current_participant = current_participant
   end
 
   # GET /subjects/1/edit

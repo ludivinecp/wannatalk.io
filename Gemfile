@@ -4,7 +4,7 @@ ruby '2.3.0'
 gem 'faker'
 gem 'haml'
 gem 'devise'
-
+gem 'httparty'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use SCSS for stylesheets

@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module MyAppForCrudAndForms
   class Application < Rails::Application
+    Dir[File.join(Rails.root, 'lib', '*.rb')].each{|file| require file}
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

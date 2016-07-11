@@ -1,0 +1,10 @@
+%ul
+  - @conferences.each do |conf|
+    %li
+      %span
+        = link_to (conf.url) do
+          Paris rb du "#{conf.date}"
+
+
+
+

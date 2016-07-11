@@ -1,0 +1,25 @@
+%p#notice= notice
+%h1.text-center Listing Participants
+.container
+  .row
+    %table
+      %thead
+        %tr
+          %th.col-sm-offset-1.col-sm-2 Name
+          %th.col-sm-2 Email
+          %th{:colspan => "3"}
+      %tbody
+        - @participants.each do |participant|
+          %tr
+            %td.col-sm-offset-1.col-sm-2= participant.name
+            %td.col-sm-2= participant.email
+            %td.col-sm-1
+            %td.col-sm-2.text-center
+              = link_to 'Show', participant
+              | #{link_to 'Edit', edit_participant_path(participant)} | #{link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' }}
+%br/
+.text-center
+  %td
+    = link_to 'New Participant', new_participant_path
+    |
+  %td= link_to 'Home', root_path

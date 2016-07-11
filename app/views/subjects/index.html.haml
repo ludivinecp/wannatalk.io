@@ -6,8 +6,8 @@
         %tr
           %th.col-sm-offset-1.col-sm-2 Title
           %th.col-sm-2 Description
-          %th.col-sm-2 Questioner
-          %th.col-sm-2 Conférence
+          %th.col-sm-2 Rapporteur
+          %th.col-sm-2 subject
           %th{:colspan => "3"}
       %tbody
         - @subjects.each do |subject|
@@ -20,9 +20,9 @@
             %td.col-sm-2.text-center
               = link_to 'Show', subject
               | #{link_to 'Edit', edit_subject_path(subject)} | #{link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }}
- 
+
               = render partial: 'inscription_button', locals: {subject: subject}
-              
+
 %br/
 .text-center
   %td

@@ -10,6 +10,7 @@
   %p
     %strong Conference:
     = @subject.conference.title
+    = @subject.conference.date
   %p
     %strong Participant:
     %ul
@@ -18,12 +19,4 @@
           = interested.email
 
   = link_to 'Edit', edit_subject_path(@subject)
-  |
-  \#{link_to 'Back', subjects_path} |
-  \#{link_to 'Home', root_path}
-    du
-    = @subject.conference.date
-  = link_to 'Edit', edit_subject_path(@subject)
-  |
-  \#{link_to 'Back', subjects_path} |
-  \#{link_to 'Home', root_path}
+

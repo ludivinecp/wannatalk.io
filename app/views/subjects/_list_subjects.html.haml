@@ -1,0 +1,10 @@
+- @conference.subjects.each do |subject|
+  %tr
+    %td.col-sm-offset-1.col-sm-2= subject.title
+    %td.col-sm-2= subject.description
+    %td.col-sm-2= subject.questioner.try(:name)
+    %td.col-sm-2= subject.conference.title
+    %td.col-sm-1
+    %td.col-sm-2.text-center
+      = link_to 'Show', subject
+      = render partial: 'subjects/inscription_button', locals: {subject: subject}

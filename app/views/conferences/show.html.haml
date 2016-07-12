@@ -1,13 +1,34 @@
+.h2.text-center
+  = link_to (@conference.url) do
+    #{@conference.title}
+
+  %p Date: #{@conference.date}
+
+%h3.text-center Subjects
+
+#columns
+  - @conference.subjects.each do |subject|
+    .pin
+      = link_to subject_path(subject) do
+        %img{:src => "https://humancoders-formations.s3.amazonaws.com/uploads/course/logo/15/formation-ruby.png"}/
+      %h4
+        = subject.title
+      %p
+        = subject.description
+        = subject.questioner.try(:name)
+        = subject.conference.title
+
+        = render partial: 'subjects/inscription_button', locals: {subject: subject}
+
+
+        - if participant_signed_in?
+          - if questioner?(subject)
+            | #{link_to 'Edit', edit_subject_path(subject)} | #{link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' }}
+
 .text-center
-  %h1
-    %strong= @conference.title
+  = link_to 'New Subject', new_subject_path
+
+
   %p
-    %strong Url:
-    = @conference.url
-  %p
-    %strong Date:
-    = @conference.date
-  = link_to 'Edit', edit_conference_path(@conference)
-  |
   \#{link_to 'Back', conferences_path} |
-  \#{link_to 'Home', root_path}
+

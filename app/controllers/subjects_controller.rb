@@ -5,12 +5,15 @@ class SubjectsController < ApplicationController
   # GET /subjects.json
   def index
     @subjects = Subject.all
+    @conferences = Conference.save_conference_from_api.current_conferences #TODO REFACTO
   end
 
   # GET /subjects/1
   # GET /subjects/1.json
   def show
     @interesteds = @subject.interested
+    @conferences = Conference.save_conference_from_api.current_conferences #TODO REFACTO
+
   end
 
   # GET /subjects/new

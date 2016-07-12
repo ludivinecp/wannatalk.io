@@ -4,13 +4,14 @@ class ConferencesController < ApplicationController
   # GET /conferences
   # GET /conferences.json
   def index
-   @conferences = Conference.save_conference_from_api.current_conferences
+   @conferences = Conference.save_conference_from_api.current_conferences #TODO REFACTO
   end
 
 
   # GET /conferences/1
   # GET /conferences/1.json
   def show
+   @conferences = Conference.save_conference_from_api.current_conferences #TODO REFACTO
   end
 
   # GET /conferences/new
@@ -37,7 +38,6 @@ class ConferencesController < ApplicationController
       end
     end
   end
-
   # PATCH/PUT /conferences/1
   # PATCH/PUT /conferences/1.json
   def update

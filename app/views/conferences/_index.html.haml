@@ -1,0 +1,7 @@
+%ul
+  - @conferences.each do |conf|
+    %li
+      %span
+        = link_to "Paris rb du #{conf.date}", conference_path(conf)
+
+

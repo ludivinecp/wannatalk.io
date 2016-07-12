@@ -1,0 +1,27 @@
+#wrapper
+  / Sidebar
+  #sidebar-wrapper
+    %ul.sidebar-nav
+      %li.sidebar-brand
+        = link_to 'WANNATALK', root_path
+        = render 'conferences/index'
+  / /#sidebar-wrapper
+  / Page Content
+  #page-content-wrapper
+    .container-fluid
+      .row
+        .col-lg-12
+          %h1 WANNATALK
+          %a#menu-toggle.btn.btn-default{:href => "#menu-toggle"} < Conferences
+  / /#page-content-wrapper
+/ /#wrapper
+/ jQuery
+%script{:src => "js/jquery.js"}
+/ Bootstrap Core JavaScript
+%script{:src => "js/bootstrap.min.js"}
+/ Menu Toggle Script
+:javascript
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+  });

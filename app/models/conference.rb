@@ -2,33 +2,34 @@ class Conference < ActiveRecord::Base
   validates_presence_of :title, :date, :url
   has_many :subjects
   has_many :conference_participants
-	has_many :participants, through: :conference_participants
+  has_many :participants, through: :conference_participants
   validates :date, :uniqueness => true
   scope :current_conferences, -> {where("date > ?", Time.now)}
 
+  @@conf = 'ParisRb'
   def self.data_from_api
-    response = ApiMeetup.new.events('parisrb')
+    response = ApiMeetup.new.events(@@conf)
     api_data = JSON.parse(response.body)
 
     api_data
   end
 
-  #Keep only Paris RB conferences
-  def self.parisrb_conferences(api_data)
-    parisrb = []
+  #Keep only requested conferences
+  def self.conferences_filter(api_data)
+    requested_conferences = []
     api_data.each do |event|
-      if event["name"] == "ParisRb.new(premier: :mardi, pour: :talks)"
-        parisrb << event
+      if event["name"].include?(@@conf)
+        requested_conferences << event
       end
     end
-    parisrb
+    requested_conferences
   end
 
 
-  #Save Paris RB conferences from the Meetup API
-  def self.save_conference_from_api
+  #Save requested conferences from the Meetup API
+  def self.save_conferences_from_api
     data = data_from_api
-    parisrb_conferences(data).each do |line|
+    conferences_filter(data).each do |line|
       conference = self.new
       conference.title = line['name']
       conference.date = format_date(line['time'])

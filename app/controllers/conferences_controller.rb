@@ -4,7 +4,7 @@ class ConferencesController < ApplicationController
   # GET /conferences
   # GET /conferences.json
   def index
-   @conferences = Conference.save_conference_from_api.current_conferences
+    @conferences = Conference.save_conferences_from_api.current_conferences
   end
 
 
@@ -26,7 +26,6 @@ class ConferencesController < ApplicationController
   # POST /conferences.json
   def create
     @conference = Conference.new(conference_params)
-
     respond_to do |format|
       if @conference.save
         format.html { redirect_to @conference, notice: 'Conference was successfully created.' }

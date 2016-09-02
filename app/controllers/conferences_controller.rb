@@ -5,7 +5,7 @@ class ConferencesController < ApplicationController
   # GET /conferences.json
   def index
     #Call to the meetup API
-    response = ApiMeetup.new.events(params[:title])
+    response = ApiMeetup.new.group_events(params[:title])
     api_data = JSON.parse(response.body)
 
     filtered_conferences = Conference.conferences_filter(api_data, params[:title])

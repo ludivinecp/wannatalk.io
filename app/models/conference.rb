@@ -11,7 +11,7 @@ class Conference < ActiveRecord::Base
   def self.conferences_filter(data, title)
     requested_conferences = []
     data.each do |event|
-      if event["name"].include?(title) #This should receive params[:title] instead of 'ParisRb'
+      if event["name"].include?(title)
         requested_conferences << event
       end
     end
@@ -20,7 +20,6 @@ class Conference < ActiveRecord::Base
 
   #Save requested conferences from the Meetup API
   def self.save_conferences_from_api(conferences)
-    # data = data_from_api
     conferences.each do |line|
       conference = self.new
       conference.title = line['name']

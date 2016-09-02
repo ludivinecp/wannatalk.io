@@ -4,11 +4,12 @@ class ConferencesController < ApplicationController
   # GET /conferences
   # GET /conferences.json
   def index
-    #save requested conferences from meetup API
+    #Call to the meetup API
     response = ApiMeetup.new.events(params[:title])
     api_data = JSON.parse(response.body)
-    filter = Conference.conferences_filter(api_data)
-    conferences = Conference.save_conferences_from_api(api_data)
+
+    filtered_conferences = Conference.conferences_filter(api_data, params[:title])
+    conferences = Conference.save_conferences_from_api(filtered_conferences)
 
     @conferences = conferences.current_conferences
   end
